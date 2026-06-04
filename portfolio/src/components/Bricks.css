@@ -1,0 +1,7 @@
+.bricks { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.bk {
+  position: absolute; width: 46px; height: 21px;
+  background: var(--c-brick);
+  border: 2.5px solid rgba(43, 42, 40, 0.55);
+  border-radius: 5px;
+}

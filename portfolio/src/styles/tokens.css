@@ -1,0 +1,22 @@
+:root {
+  --c-bg:    #F7F3EC;   /* NOUVEAU fond dominant : blanc cassé clair */
+  --c-brick: #FBFAF7;   /* NOUVEAU face des briques (presque blanc) */
+  --c-cream: #EAD9C4;   /* devient un ACCENT (panneaux chaleureux) */
+  --c-paper: #F6F1E9;
+  --c-surface: #F2E7D6;
+  --c-sand:  #D6B795;
+  --c-sage:  #8FA17C;
+  --c-forest:#45563E;
+  --c-ink:   #2B2A28;
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono:    "JetBrains Mono", monospace;
+
+  --radius: 14px;
+  --stroke: 2.5px;
+  --space:  clamp(1rem, 4vw, 2.5rem);
+  --maxw:   1100px;
+
+
+  --ease: 200ms ease;
+}

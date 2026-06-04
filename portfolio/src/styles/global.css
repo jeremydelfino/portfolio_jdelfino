@@ -1,0 +1,41 @@
+body {
+  background: var(--c-cream);
+  color: var(--c-ink);
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
+h1 { font-size: clamp(3rem, 8vw, 5.5rem); }
+h2 { font-size: clamp(2rem, 5vw, 3.5rem); }
+
+/* L'accent "terminal" réutilisable partout */
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  color: var(--c-forest);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.85rem 1.6rem;
+  border-radius: var(--radius);
+  font-weight: 500;
+  border: var(--stroke) solid var(--c-ink);
+  transition: transform var(--ease), background var(--ease);
+}
+.btn--primary { background: var(--c-forest); color: var(--c-paper); border-color: var(--c-forest); }
+.btn--primary:hover { transform: translateY(-2px); }
+.btn--ghost:hover { background: var(--c-surface); }
+
+.brickwall { position: absolute; inset: -10% 0 0 0; z-index: 0; pointer-events: none; }
+
+a:hover { color: var(--c-forest); transition: color var(--ease); }
+
+section { padding: clamp(4rem, 10vw, 7rem) var(--space); }
+section { scroll-margin-top: 100px; }
+
+.container { max-width: var(--maxw); margin-inline: auto; }
