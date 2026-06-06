@@ -1,0 +1,150 @@
+/* ── Section + panneau = le mur du café ──────────────────────── */
+.about { padding: clamp(1.5rem, 4vw, 3.5rem) clamp(0.75rem, 1.5vw, 1.5rem); }
+.about__panel {
+  position: relative; overflow: hidden;
+  border: 4px solid var(--c-ink); border-radius: 24px;
+  padding: clamp(4rem, 7vw, 6.5rem) clamp(1.25rem, 4vw, 4rem) clamp(3rem, 5vw, 4.5rem);
+  background:
+    linear-gradient(180deg, #F3E7D6 0%, #EBDBC5 62%, #E2CFB4 100%);
+}
+/* lambris bas (mur de café) */
+.about__panel::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: clamp(70px, 12%, 130px);
+  background: repeating-linear-gradient(90deg, #DBC4A4 0 46px, #D3BA97 46px 48px);
+  border-top: 4px solid var(--c-ink); z-index: 0; pointer-events: none;
+}
+.about__content { position: relative; z-index: 3; max-width: var(--maxw); margin: 0 auto; }
+
+.about__head { margin-bottom: clamp(1.5rem, 3vw, 2.25rem); }
+.about__head h2 { margin: 0.4rem 0 0.7rem; }
+.about__lead { font-size: clamp(1.05rem, 1.4vw, 1.25rem); opacity: 0.82; max-width: 52ch; }
+.about__actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.4rem; }
+.about__btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  box-shadow: 4px 4px 0 var(--c-ink); transition: transform var(--ease), box-shadow var(--ease), background var(--ease);
+}
+.about__btn:hover { transform: translate(-1px, -2px); box-shadow: 6px 6px 0 var(--c-ink); }
+.btn--ghost.about__btn { background: var(--c-brick); }
+
+/* ── DÉCOR café (derrière le liège) ──────────────────────────── */
+.cafe-backdrop { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.bd { position: absolute; }
+.bd-fairy { top: 10px; left: 0; width: 100%; height: 56px; }
+.bd-lamp { top: -8px; transform-box: fill-box; transform-origin: top center; }
+.bd-lamp--l { left: 13%; animation: lamp-sway 7s ease-in-out infinite; }
+.bd-lamp--r { right: 16%; animation: lamp-sway 8.5s ease-in-out infinite reverse; }
+.bd-hangplant { top: -6px; left: 7%; }
+.bd-neon { top: 92px; left: 3.5%; }
+.bd-shelf { top: 250px; left: 0.5%; }
+.bd-window { top: 120px; right: 2%; }
+.bd-monstera { bottom: 8px; left: 0.5%; }
+.bd-menu { bottom: 28px; right: 3.5%; }
+.bd-stool { bottom: 6px; right: 26%; }
+
+/* glow / scintillement / néon */
+.lamp-glow { transform-box: fill-box; transform-origin: center; opacity: 0.4; animation: ab-glow 4.5s ease-in-out infinite; }
+.bulb { transform-box: fill-box; transform-origin: center; animation: ab-twinkle 2.6s ease-in-out infinite; }
+.neon { filter: drop-shadow(0 0 6px rgba(143, 161, 124, 0.75)); animation: ab-neon 3.6s ease-in-out infinite; }
+.ab-sway { transform-box: fill-box; transform-origin: bottom center; animation: ab-sway 6.5s ease-in-out infinite; }
+.ab-sway-slow { transform-box: fill-box; transform-origin: top center; animation: ab-sway 9s ease-in-out infinite; }
+
+@keyframes lamp-sway { 0%, 100% { transform: rotate(-2.5deg); } 50% { transform: rotate(2.5deg); } }
+@keyframes ab-glow { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.55; } }
+@keyframes ab-twinkle { 0%, 100% { opacity: 0.45; } 50% { opacity: 1; } }
+@keyframes ab-neon {
+  0%, 100% { opacity: 0.85; filter: drop-shadow(0 0 5px rgba(143, 161, 124, 0.55)); }
+  50% { opacity: 1; filter: drop-shadow(0 0 12px rgba(143, 161, 124, 0.95)); }
+}
+@keyframes ab-sway { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+
+/* ── Le liège ────────────────────────────────────────────────── */
+.board {
+  position: relative; max-width: min(100%, 980px); margin: 0 auto;
+  height: clamp(560px, 76vh, 680px); overflow: hidden;
+  border: 4px solid var(--c-ink); border-radius: 18px;
+  box-shadow: inset 0 0 0 7px rgba(43, 42, 40, 0.08), 8px 10px 0 var(--c-ink);
+  background-color: #C9A574;
+  background-image:
+    radial-gradient(rgba(43, 42, 40, 0.10) 1.3px, transparent 1.4px),
+    radial-gradient(rgba(43, 42, 40, 0.07) 1.3px, transparent 1.4px);
+  background-size: 16px 16px, 22px 22px; background-position: 0 0, 8px 11px;
+}
+.garland { position: absolute; top: 6px; left: 0; width: 100%; height: 60px; pointer-events: none; }
+
+/* ── Élément épinglé ─────────────────────────────────────────── */
+.pin { position: absolute; rotate: var(--rot, 0deg); cursor: grab; touch-action: none; }
+.pin:active { cursor: grabbing; }
+.tack { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); z-index: 3; pointer-events: none; }
+.tape { position: absolute; top: -10px; left: 50%; width: 64px; height: 22px; transform: translateX(-50%) rotate(-3deg); background: rgba(143, 161, 124, 0.5); border: 1.5px solid rgba(43, 42, 40, 0.25); z-index: 3; pointer-events: none; }
+
+/* polaroïd 3D */
+.pin--polaroid { width: 240px; }
+.polaroid { position: relative; perspective: 1000px; }
+.polaroid__inner { position: relative; transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1); transform-style: preserve-3d; }
+.polaroid.is-flip .polaroid__inner { transform: rotateY(180deg); }
+.polaroid__face { backface-visibility: hidden; background: var(--c-paper); border: 3px solid var(--c-ink); border-radius: 4px; box-shadow: 6px 7px 0 var(--c-ink); padding: 12px 12px 0; }
+.polaroid__front { display: flex; flex-direction: column; }
+.polaroid__img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border: 2.5px solid var(--c-ink); border-radius: 2px; background: var(--c-surface); display: block; }
+.polaroid__cap { font-family: var(--font-mono); font-size: 0.82rem; text-align: center; padding: 10px 0 14px; }
+.polaroid__back { position: absolute; inset: 0; transform: rotateY(180deg); display: flex; flex-direction: column; gap: 0.4rem; justify-content: center; padding: 18px; font-family: var(--font-mono); font-size: 0.85rem; background: var(--c-surface); }
+.polaroid__backh { font-size: 1.3rem; }
+.flipbtn { position: absolute; right: 8px; bottom: 8px; z-index: 4; width: 28px; height: 28px; display: grid; place-items: center; border: 2.5px solid var(--c-ink); border-radius: 8px; background: var(--c-sand); color: var(--c-ink); box-shadow: 2px 2px 0 var(--c-ink); transition: transform var(--ease); }
+.flipbtn:hover { transform: rotate(-25deg); }
+
+/* carte dev */
+.pin--id { width: 250px; }
+.idcard { background: var(--c-brick); border: 3px solid var(--c-ink); border-radius: 12px; box-shadow: 6px 7px 0 var(--c-ink); padding: 0.85rem 1rem 1rem; }
+.idcard__top { display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-mono); font-weight: 700; font-size: 0.82rem; padding-bottom: 0.6rem; border-bottom: 2.5px dashed var(--c-ink); margin-bottom: 0.6rem; }
+.idcard__chip { display: inline-flex; padding: 3px; border: 2.5px solid var(--c-ink); border-radius: 8px; background: var(--c-surface); }
+.idcard__rows { margin: 0; display: flex; flex-direction: column; gap: 0.35rem; }
+.idcard__rows > div { display: flex; gap: 0.5rem; align-items: baseline; }
+.idcard__rows dt { font-family: var(--font-mono); font-size: 0.72rem; opacity: 0.6; width: 42px; flex: none; }
+.idcard__rows dd { margin: 0; font-weight: 500; font-size: 0.92rem; }
+.idcard__line { margin-top: 0.7rem; font-style: italic; font-size: 0.92rem; opacity: 0.85; }
+
+/* post-its */
+.pin--sticky { width: 168px; }
+.pin--sticky p { margin: 0; font-family: var(--font-mono); font-size: 0.84rem; line-height: 1.45; padding: 1rem 0.9rem; border: 2.5px solid var(--c-ink); box-shadow: 5px 6px 0 rgba(43, 42, 40, 0.7); }
+.sticky--sand p { background: #F4C879; }
+.sticky--sage p { background: #B6C79E; }
+.sticky--surface p { background: #F2E7D6; }
+.sticky__tape { position: absolute; top: -9px; left: 50%; width: 52px; height: 18px; transform: translateX(-50%) rotate(2deg); background: rgba(246, 241, 233, 0.65); border: 1.5px solid rgba(43, 42, 40, 0.25); z-index: 3; pointer-events: none; }
+
+/* ticket */
+.pin--ticket { width: 230px; }
+.ticket { display: flex; border: 3px solid var(--c-ink); border-radius: 10px; overflow: hidden; box-shadow: 6px 7px 0 var(--c-ink); background: var(--c-brick); }
+.ticket__stub { display: grid; place-items: center; width: 64px; flex: none; background: var(--c-forest); color: var(--c-paper); font-family: var(--font-mono); font-weight: 700; font-size: 1.4rem; border-right: 3px dashed var(--c-ink); }
+.ticket__main { padding: 0.7rem 0.9rem; display: flex; flex-direction: column; gap: 2px; }
+.ticket__main strong { font-size: 1.05rem; letter-spacing: 0.04em; }
+.ticket__main span { font-size: 0.82rem; opacity: 0.8; }
+.ticket__row { font-family: var(--font-mono); font-size: 0.72rem !important; opacity: 0.6 !important; margin-top: 2px; }
+
+/* fidélité café */
+.pin--loyalty { width: 210px; }
+.loyalty { background: var(--c-paper); border: 3px solid var(--c-ink); border-radius: 12px; box-shadow: 6px 7px 0 var(--c-ink); padding: 0.85rem 1rem; }
+.loyalty__h { font-family: var(--font-mono); font-weight: 700; margin: 0 0 0.6rem; }
+.loyalty__stamps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin-bottom: 0.5rem; }
+.loyalty small { font-family: var(--font-mono); font-size: 0.72rem; opacity: 0.65; }
+
+/* ville + tasse */
+.citynote { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--c-sage); border: 2.5px solid var(--c-ink); border-radius: 999px; box-shadow: 4px 4px 0 var(--c-ink); padding: 0.4rem 0.8rem; font-family: var(--font-mono); font-size: 0.82rem; font-weight: 500; }
+
+.ab-steam { transform-box: fill-box; animation: ab-steam 3s ease-in-out infinite; }
+@keyframes ab-steam { 0%, 100% { opacity: 0.25; transform: translateY(2px); } 50% { opacity: 0.6; transform: translateY(-3px); } }
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 1024px) { .bd-hide { display: none; } } /* on garde guirlande + lampes */
+@media (max-width: 760px) {
+  .cafe-backdrop { display: none; }
+  .about__panel { padding: clamp(2.5rem, 7vw, 3.5rem) 1rem 2.5rem; }
+  .about__panel::after { display: none; }
+  .board { height: auto; min-height: 0; display: flex; flex-direction: column; align-items: center; gap: 1.6rem; padding: 2.4rem 1rem; }
+  .garland { display: none; }
+  .pin--flow { position: relative; left: auto !important; right: auto !important; top: auto !important; cursor: default; rotate: var(--rot, 0deg); }
+  .pin--polaroid, .pin--id, .pin--ticket, .pin--loyalty, .pin--sticky { width: min(280px, 86%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ab-steam, .ab-sway, .ab-sway-slow, .lamp-glow, .bulb, .neon, .bd-lamp { animation: none; }
+  .polaroid__inner, .flipbtn, .about__btn { transition: none; }
+}

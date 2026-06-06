@@ -1,0 +1,100 @@
+/* ── Section + panneau (bordure courrier aérien) ─────────────── */
+.contact { padding: clamp(1.5rem, 4vw, 3.5rem) clamp(0.75rem, 1.5vw, 1.5rem); }
+.contact__panel {
+  position: relative; overflow: hidden; background: var(--c-bg);
+  border: 4px solid var(--c-ink); border-radius: 24px;
+  padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1.25rem, 4vw, 3.5rem);
+}
+/* liseré "par avion" (rouge / forêt) en cadre intérieur */
+.contact__panel::before {
+  content: ''; position: absolute; inset: 12px; border-radius: 16px; z-index: 1; pointer-events: none;
+  border: 11px solid transparent;
+  border-image: repeating-linear-gradient(45deg, #C45A4A 0 11px, #F6F1E9 11px 22px, var(--c-forest) 22px 33px, #F6F1E9 33px 44px) 11;
+}
+.contact__content { position: relative; z-index: 3; max-width: var(--maxw); margin: 0 auto; }
+.contact__head { margin-bottom: clamp(1.5rem, 3vw, 2.25rem); }
+.contact__head h2 { margin: 0.4rem 0 0.7rem; }
+.contact__lead { font-size: clamp(1.05rem, 1.4vw, 1.25rem); opacity: 0.82; max-width: 52ch; }
+
+/* ── Fond ultra-rempli ───────────────────────────────────────── */
+.mail-backdrop { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.mb-dots { position: absolute; inset: 0; background-image: radial-gradient(rgba(43, 42, 40, 0.07) 1.3px, transparent 1.4px); background-size: 22px 22px; }
+.mb-globe { position: absolute; top: 50%; left: 50%; width: min(560px, 84%); height: auto; transform: translate(-50%, -50%); opacity: 0.16; }
+.mb-paths { position: absolute; inset: 0; width: 100%; height: 100%; }
+.mb-stamp { position: absolute; rotate: var(--rot, 0deg); filter: drop-shadow(3px 3px 0 rgba(43, 42, 40, 0.55)); }
+.mb-stamp.is-float { animation: c-float 6s ease-in-out infinite; animation-delay: var(--d, 0s); }
+.mb-postmark { position: absolute; }
+.mb-plane { position: absolute; }
+.mb-plane--1 { top: 26%; left: 30%; animation: c-fly1 16s linear infinite; }
+.mb-plane--2 { top: 64%; left: 55%; animation: c-fly2 20s linear infinite; }
+
+.airtag {
+  position: absolute; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+  color: #F6F1E9; background: #C45A4A; border: 2px solid var(--c-ink); padding: 0.18rem 0.5rem; border-radius: 3px;
+  box-shadow: 2px 2px 0 var(--c-ink);
+}
+.airtag--1 { top: 22%; right: 14%; transform: rotate(-6deg); }
+.airtag--2 { bottom: 22%; left: 16%; transform: rotate(5deg); background: var(--c-forest); }
+.airtag--3 { top: 70%; left: 38%; transform: rotate(-3deg); background: var(--c-sand); color: var(--c-ink); }
+
+@keyframes c-float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -12px; } }
+@keyframes c-fly1 { 0% { transform: translate(-40px, 30px) rotate(-18deg); } 100% { transform: translate(420px, -150px) rotate(-18deg); } }
+@keyframes c-fly2 { 0% { transform: translate(0, 0) rotate(20deg); } 100% { transform: translate(360px, 120px) rotate(20deg); } }
+
+/* ── La carte postale = le formulaire ────────────────────────── */
+.postcard {
+  position: relative; z-index: 3; max-width: 820px; margin: 0 auto;
+  background: var(--c-paper); border: 4px solid var(--c-ink); border-radius: 10px;
+  box-shadow: 12px 14px 0 var(--c-ink);
+}
+.postcard__inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 3vw, 2rem); padding: clamp(1.25rem, 3vw, 2rem); position: relative; }
+.postcard__inner::before { content: ''; position: absolute; top: 16px; bottom: 16px; left: 50%; width: 0; border-left: 2.5px dashed rgba(43, 42, 40, 0.4); }
+
+.pc-field { display: block; margin-bottom: 0.9rem; }
+.pc-field span { display: block; font-family: var(--font-mono); font-size: 0.74rem; color: var(--c-forest); font-weight: 700; margin-bottom: 0.3rem; }
+.pc-field input, .pc-field textarea {
+  width: 100%; font-family: inherit; font-size: 0.95rem; color: var(--c-ink);
+  background: var(--c-brick); border: 2.5px solid var(--c-ink); border-radius: 9px;
+  padding: 0.6rem 0.7rem; box-shadow: 3px 3px 0 var(--c-ink); transition: box-shadow var(--ease), transform var(--ease);
+}
+.pc-field textarea { resize: vertical; min-height: 150px; line-height: 1.55; }
+.pc-field input:focus, .pc-field textarea:focus { outline: none; background: var(--c-surface); box-shadow: 3px 3px 0 var(--c-sage); }
+.pc-left { display: flex; flex-direction: column; }
+.pc-left .pc-field, .pc-left textarea { flex: 1; }
+
+.pc-right { display: flex; flex-direction: column; }
+.pc-stampbox { position: relative; align-self: flex-end; width: 78px; height: 90px; margin-bottom: 0.4rem; }
+.pc-stamp {
+  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+  background: var(--c-surface); border: 2.5px dashed var(--c-ink); border-radius: 4px; rotate: 4deg;
+}
+.pc-stamp small { font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.05em; }
+.pc-postmark { position: absolute; top: -16px; right: -22px; opacity: 0; transform: scale(1.6) rotate(-20deg); transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.pc-postmark.is-on { opacity: 1; transform: scale(1) rotate(-12deg); }
+
+.pc-to { font-family: var(--font-mono); font-weight: 700; border-bottom: 2px solid var(--c-ink); padding-bottom: 0.3rem; margin: 0 0 0.9rem; }
+.pc-send { display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem; margin-top: auto; box-shadow: 4px 4px 0 var(--c-ink); transition: transform var(--ease), box-shadow var(--ease); }
+.pc-send:hover { transform: translate(-1px, -2px); box-shadow: 6px 6px 0 var(--c-ink); }
+
+/* ── Liens directs ───────────────────────────────────────────── */
+.contact__direct { position: relative; z-index: 3; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.7rem; margin-top: 1.6rem; }
+.contact__direct > span { font-family: var(--font-mono); font-size: 0.8rem; opacity: 0.7; }
+.contact__chip {
+  display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 0.85rem;
+  background: var(--c-brick); border: 2.5px solid var(--c-ink); border-radius: 999px;
+  font-family: var(--font-mono); font-size: 0.82rem; color: var(--c-ink); box-shadow: 3px 3px 0 var(--c-ink);
+  transition: transform var(--ease), box-shadow var(--ease);
+}
+.contact__chip:hover { transform: translate(-1px, -2px); box-shadow: 5px 5px 0 var(--c-ink); }
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 760px) {
+  .md-hide { display: none; }
+  .postcard__inner { grid-template-columns: 1fr; }
+  .postcard__inner::before { display: none; }
+  .pc-stampbox { align-self: flex-start; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mb-stamp.is-float, .mb-plane--1, .mb-plane--2 { animation: none; }
+  .pc-postmark, .pc-send, .contact__chip, .pc-field input, .pc-field textarea { transition: none; }
+}

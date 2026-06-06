@@ -5,7 +5,7 @@ import Bricks from '../components/Bricks'
 import DeskScene from '../components/DeskScene'
 import './Hero.css'
 
-const ROLES = ['développeur', 'étudiant en informatique', 'amateur de vanilla latté', 'fan KC']
+const ROLES = ['développeur', 'étudiant en informatique', 'amateur de vanilla latté', 'fan de la prestigieuse Karmine Corp', '개발자', "coréen à ses heures perdues"]
 
 function useTypewriter(words, speed = 90, pause = 1400) {
   const [text, setText] = useState('')
@@ -43,8 +43,8 @@ export default function Hero() {
           <div className="hero__main">
             <div className="hero__text">
               <motion.p className="mono" {...fade(0.3)}>&gt; portfolio _</motion.p>
-              <motion.h1 className="hero__name" {...fade(0.4)}>Jérémy<br />Delfino</motion.h1>
-              <motion.p className="hero__lead" {...fade(0.55)}>Étudiant en informatique qui transforme le café en code propre.</motion.p>
+              <motion.h1 className="hero__name" {...fade(0.4)}>Jérémy<br />DELFINO</motion.h1>
+              <motion.p className="hero__lead" {...fade(0.55)}>Étudiant en informatique && développeur freelance.</motion.p>
               <motion.div className="hero__cta" {...fade(0.7)}>
                 <a href="#projects" className="btn btn--primary btn--lg">Voir mes projets</a>
                 <a href="#contact" className="btn btn--ghost btn--lg">Me contacter</a>

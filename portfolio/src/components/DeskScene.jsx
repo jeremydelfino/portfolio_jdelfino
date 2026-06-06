@@ -10,9 +10,6 @@ export default function DeskScene({ role }) {
         <rect x="86" y="34" width="220" height="186" rx="20" fill="var(--c-ink)" />
         <rect x="78" y="26" width="220" height="186" rx="20" fill="var(--c-surface)" stroke="var(--c-ink)" strokeWidth="4" />
         <rect x="94" y="42" width="188" height="154" rx="12" fill="#1C1B18" />
-        <circle cx="110" cy="58" r="4" fill="var(--c-sage)" />
-        <circle cx="125" cy="58" r="4" fill="#9BC472" />
-        <circle cx="140" cy="58" r="4" fill="var(--c-forest)" />
         <g className="sway">
           <ellipse cx="44" cy="210" rx="15" ry="30" transform="rotate(-28 44 210)" fill="var(--c-forest)" stroke="var(--c-ink)" strokeWidth="3" />
           <ellipse cx="70" cy="206" rx="15" ry="31" transform="rotate(22 70 206)" fill="var(--c-sage)" stroke="var(--c-ink)" strokeWidth="3" />
@@ -25,7 +22,7 @@ export default function DeskScene({ role }) {
           <path d="M328 212 c-4 -7 4 -10 0 -17" />
         </g>
         <rect x="304" y="216" width="44" height="30" rx="7" fill="var(--c-brick)" stroke="var(--c-ink)" strokeWidth="4" />
-        <ellipse cx="326" cy="217" rx="19" ry="4.5" fill="var(--c-forest)" />
+        <ellipse cx="326" cy="217" rx="19" ry="4.5" fill="#7c5d43" />
         <path d="M348 223 c14 0 14 17 0 17" fill="none" stroke="var(--c-ink)" strokeWidth="4" />
       </svg>
       <div className="term">
