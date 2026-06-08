@@ -6,6 +6,7 @@ import './NavBar.css'
 
 const LINKS = [
   { label: 'À propos', href: '#about', id: 'about' },
+  { label: 'Parcours', href: '#experience', id: 'experience' },
   { label: 'Projets', href: '#projects', id: 'projects' },
   { label: 'Compétences', href: '#skills', id: 'skills' },
 ]

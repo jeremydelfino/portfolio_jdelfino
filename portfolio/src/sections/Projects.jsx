@@ -152,7 +152,7 @@ export default function Projects() {
 
                     <div className="proj__links">
                       <a className="btn btn--primary proj__btn" href={p.links.demo} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink size={16} strokeWidth={2.4} /> Démo
+                        <ExternalLink size={16} strokeWidth={2.4} /> Lien
                       </a>
                       <a className="btn btn--ghost proj__btn" href={p.links.code} target="_blank" rel="noopener noreferrer">
                         <Code2 size={16} strokeWidth={2.4} /> Code

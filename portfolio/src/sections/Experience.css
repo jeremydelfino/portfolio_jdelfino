@@ -1,0 +1,145 @@
+/* ──────────────────────────────────────────────────────────────────
+   EXPERIENCE — « La salle de mon parcours » : pièce 2.5D, cadre unique
+   ────────────────────────────────────────────────────────────────── */
+.experience { --c-exp: #C2683F; padding: clamp(1.5rem, 4vw, 3.5rem) clamp(0.75rem, 1.5vw, 1.5rem); }
+.experience__inner { max-width: var(--maxw); margin-inline: auto; }
+
+/* en-tête (au-dessus de la pièce — section normale) */
+.experience__head { margin-bottom: clamp(1rem, 2vw, 1.5rem); }
+.experience__head h2 { margin: 0.4rem 0 0.8rem; }
+.experience__subrow { display: flex; flex-wrap: wrap; gap: 0.7rem 1.4rem; align-items: center; justify-content: space-between; }
+.experience__hint {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-mono); font-size: 0.88rem; opacity: 0.85;
+  background: var(--c-surface); border: 2.5px solid var(--c-ink); border-radius: 12px;
+  padding: 0.5rem 0.8rem; box-shadow: 3px 3px 0 var(--c-ink);
+}
+.experience__hint svg { color: var(--c-forest); flex-shrink: 0; }
+.legend { display: flex; gap: 0.9rem; font-family: var(--font-mono); font-size: 0.8rem; flex-wrap: wrap; list-style: none; padding: 0; margin: 0; }
+.legend li { display: inline-flex; align-items: center; gap: 0.4rem; }
+.legend__dot { width: 13px; height: 13px; border-radius: 50%; border: 2.5px solid var(--c-ink); display: inline-block; }
+.legend__dot--formation { background: var(--c-forest); }
+.legend__dot--experience { background: var(--c-exp); }
+.legend__dot--asso { background: var(--c-sage); }
+
+/* ── LE CADRE UNIQUE = LA PIÈCE ──────────────────────────────────── */
+.room-frame {
+  position: relative;               /* ancre les pop-ups */
+  overflow: visible;                /* ← les pop-ups ne sont PLUS coupées */
+  border: 4px solid var(--c-ink);
+  border-radius: 24px;
+  box-shadow: 12px 14px 0 var(--c-ink);
+}
+.room-clip {
+  border-radius: 20px;              /* coins de la scène */
+  overflow: hidden;                 /* clippe seulement le décor, pas les pop-ups */
+}
+.room { display: block; width: 100%; height: auto; background: linear-gradient(180deg, #FBF7F0, var(--c-bg)); }
+
+/* murs / sol */
+.r-wall { fill: var(--c-brick); }
+.r-floor { fill: #ECE2D2; }
+.r-floorline { stroke: var(--c-ink); stroke-width: 3; }
+.r-base { fill: var(--c-sand); stroke: var(--c-ink); stroke-width: 2.5; }
+.r-brickline { stroke: var(--c-ink); stroke-width: 1; opacity: 0.16; }
+.r-persp { stroke: var(--c-ink); stroke-width: 0.8; opacity: 0.1; }
+.r-rug { fill: var(--c-sage); opacity: 0.16; }
+
+/* déco */
+.decor { pointer-events: none; }
+.decor [class^="d-"], .decor [class*=" d-"] { stroke: var(--c-ink); }
+.d-moulure { stroke: var(--c-ink); stroke-width: 3; opacity: 0.5; }
+.d-cord { stroke: var(--c-ink); stroke-width: 2.4; }
+.d-shade { fill: var(--c-sand); stroke-width: 3; }
+.d-bulb { fill: #FBE7A6; stroke-width: 2; }
+.d-clock-f { fill: var(--c-paper); stroke-width: 3; } .d-clock-c { fill: var(--c-ink); stroke: none; }
+.d-hand { stroke-width: 2.2; stroke-linecap: round; }
+.d-window { fill: var(--c-surface); stroke-width: 4; }
+.d-sky { fill: #DCE6EE; stroke: none; }
+.d-sun { fill: var(--c-sand); stroke-width: 2.4; }
+.d-cloud { fill: var(--c-paper); stroke-width: 2.2; }
+.d-city rect { fill: #B9C6D2; stroke: var(--c-ink); stroke-width: 2; }
+.d-mull { stroke-width: 3; }
+.d-shelf-box { fill: var(--c-cream); stroke-width: 4; } .d-shelf-l { stroke-width: 3; }
+.d-books rect { stroke: var(--c-ink); stroke-width: 2; }
+.d-plank { fill: var(--c-sand); stroke-width: 3; }
+.d-trophy { fill: #E6C667; stroke-width: 3; } .d-trophy-h { fill: none; stroke-width: 3; }
+.d-trophy-b { fill: #E6C667; stroke-width: 2.6; } .d-ball { fill: var(--c-exp); stroke-width: 3; }
+.d-frame { fill: var(--c-sand); stroke-width: 3.5; } .d-frame-in { fill: #CDE0E8; stroke: none; }
+.d-mtn { fill: var(--c-sage); stroke-width: 2; } .d-frame-sun { fill: var(--c-exp); stroke: none; }
+.d-cal { fill: var(--c-paper); stroke-width: 3; } .d-cal-top { fill: var(--c-exp); stroke-width: 3; }
+.d-cal-dots circle { fill: var(--c-ink); stroke: none; opacity: 0.5; } .d-cal-mark { fill: none; stroke: var(--c-exp); stroke-width: 2.6; }
+.d-poster { fill: var(--c-paper); stroke-width: 3; } .d-poster-c { fill: #D9776A; stroke-width: 2.4; }
+.d-poster-t { fill: var(--c-forest); stroke: none; font-family: var(--font-display); font-weight: 700; font-size: 22px; }
+.d-rack { stroke-width: 4; stroke-linecap: round; } .d-hook { stroke-width: 3; stroke-linecap: round; }
+.d-coat { fill: var(--c-forest); stroke-width: 3; stroke-linejoin: round; }
+.d-steam { fill: none; stroke-width: 2.4; stroke-linecap: round; opacity: 0.55; animation: steam 3s ease-in-out infinite; }
+.d-key { fill: var(--c-paper); stroke-width: 2.6; }
+.d-bin { fill: var(--c-surface); stroke-width: 3; stroke-linejoin: round; } .d-bin-l { stroke-width: 2.4; }
+.d-leaf { fill: var(--c-sage); stroke-width: 2.4; stroke-linejoin: round; }
+.d-pot { fill: var(--c-sand); stroke-width: 2.6; stroke-linejoin: round; }
+.sway-sm { animation: sway-sm 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom center; }
+@keyframes sway-sm { 0%,100% { transform: rotate(-4deg) } 50% { transform: rotate(4deg) } }
+@keyframes steam { 0%,100% { opacity: 0.2; transform: translateY(2px) } 50% { opacity: 0.6; transform: translateY(-2px) } }
+
+/* ── Objets cliquables ───────────────────────────────────────────── */
+.hot { cursor: pointer; outline: none; transition: transform 0.18s ease; transform-box: fill-box; transform-origin: center bottom; }
+.hot:hover, .hot:focus-visible, .hot.is-active { transform: scale(1.045); }
+.hot__halo { fill: var(--c-sand); opacity: 0; transition: opacity 0.18s ease; }
+.hot:hover .hot__halo, .hot:focus-visible .hot__halo, .hot.is-active .hot__halo { opacity: 0.4; }
+.hot__cue-ring { stroke-width: 2.6; stroke-dasharray: 4 4; transform-box: fill-box; transform-origin: center; animation: cue 2.2s ease-in-out infinite; }
+.hot__cue-dot { stroke: var(--c-ink); stroke-width: 2; }
+.hot--formation .hot__cue-ring { stroke: var(--c-forest); } .hot--formation .hot__cue-dot { fill: var(--c-forest); }
+.hot--experience .hot__cue-ring { stroke: var(--c-exp); } .hot--experience .hot__cue-dot { fill: var(--c-exp); }
+.hot--asso .hot__cue-ring { stroke: var(--c-sage); } .hot--asso .hot__cue-dot { fill: var(--c-sage); }
+.hot.is-active .hot__cue-ring { animation: none; stroke-dasharray: none; stroke-width: 3.5; }
+@keyframes cue { 0%,100% { opacity: 0.4; transform: scale(0.85) } 50% { opacity: 1; transform: scale(1.12) } }
+.hot__tag { opacity: 0; transition: opacity 0.18s ease; pointer-events: none; }
+.hot:hover .hot__tag, .hot:focus-visible .hot__tag, .hot.is-active .hot__tag { opacity: 1; }
+.hot__tag rect { fill: var(--c-ink); }
+.hot__tag text { fill: var(--c-paper); font-family: var(--font-display); font-weight: 700; font-size: 13px; }
+
+/* ── Pop-up ──────────────────────────────────────────────────────── */
+.pop-backdrop { position: absolute; inset: 0; background: rgba(43,42,40,0.14); z-index: 5; border-radius: 20px; }
+.pop {
+  position: absolute; z-index: 6; width: min(330px, 78%);
+  max-height: 92%; overflow: auto;
+  background: var(--c-paper); border: 4px solid var(--c-ink); border-radius: 16px;
+  box-shadow: 8px 10px 0 var(--c-ink); padding: 1rem 1.1rem 1.1rem;
+}
+.pop--above { transform: translate(-50%, calc(-100% - 18px)); }
+.pop--below { transform: translate(-50%, 18px); }
+.pop--formation { border-top: 8px solid var(--c-forest); }
+.pop--experience { border-top: 8px solid var(--c-exp); }
+.pop--asso { border-top: 8px solid var(--c-sage); }
+.pop__beak { position: absolute; left: 50%; width: 18px; height: 18px; margin-left: -9px; background: var(--c-paper); border: 4px solid var(--c-ink); transform: rotate(45deg); }
+.pop--above .pop__beak { bottom: -11px; border-left: none; border-top: none; }
+.pop--below .pop__beak { top: -11px; border-right: none; border-bottom: none; }
+.pop__close { position: absolute; top: 8px; right: 8px; width: 28px; height: 28px; display: grid; place-items: center; background: var(--c-bg); border: 2.5px solid var(--c-ink); border-radius: 8px; cursor: pointer; }
+.pop__close:hover { background: var(--c-surface); }
+.pop__top { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem; padding-right: 32px; }
+.pop__badge { font-family: var(--font-mono); font-weight: 700; font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.6px; padding: 0.2rem 0.5rem; border: 2.5px solid var(--c-ink); border-radius: 8px; }
+.pop__badge--formation { background: var(--c-forest); color: var(--c-paper); }
+.pop__badge--experience { background: var(--c-exp); color: var(--c-paper); }
+.pop__badge--asso { background: var(--c-sage); color: var(--c-ink); }
+.pop__chip { font-family: var(--font-mono); font-size: 0.7rem; padding: 0.18rem 0.45rem; background: var(--c-bg); border: 2px solid var(--c-ink); border-radius: 7px; }
+.pop__title { font-size: 1.35rem; line-height: 1.05; margin: 0.15rem 0 0.45rem; }
+.pop__flag { font-size: 0.9em; }
+.pop__meta { display: flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; opacity: 0.85; margin: 0.1rem 0; }
+.pop__role { font-family: var(--font-mono); font-size: 0.82rem; font-weight: 600; color: var(--c-forest); margin: 0.55rem 0 0.45rem; }
+.pop__desc { font-size: 0.9rem; line-height: 1.5; opacity: 0.92; margin: 0 0 0.55rem; }
+.pop__note { display: flex; align-items: center; gap: 0.4rem; font-family: var(--font-mono); font-size: 0.74rem; background: var(--c-surface); border: 2px dashed var(--c-ink); border-radius: 9px; padding: 0.4rem 0.55rem; margin: 0 0 0.6rem; }
+.pop__tags { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.pop__tags li { font-family: var(--font-mono); font-size: 0.7rem; padding: 0.18rem 0.45rem; background: var(--c-bg); border: 2px solid var(--c-ink); border-radius: 7px; }
+
+/* ── Responsive ──────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* la pop-up devient une modale centrée (toujours entière) */
+  .pop, .pop--above, .pop--below { left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; width: 84%; }
+  .pop__beak { display: none; }
+  .experience__hint { font-size: 0.8rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hot, .hot__halo, .hot__tag { transition: none; }
+  .hot__cue-ring, .sway-sm, .d-steam { animation: none; }
+}
