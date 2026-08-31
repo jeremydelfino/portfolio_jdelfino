@@ -3,10 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { MapPin, CalendarRange, Link2, X, MousePointerClick } from 'lucide-react'
 import './Experience.css'
 
-/* ──────────────────────────────────────────────────────────────────
-   👉 SEULE ZONE À ÉDITER — le contenu de chaque objet de la pièce.
-   anchor : point (grille 1000×640) où s'accroche la pop-up.
-   ────────────────────────────────────────────────────────────────── */
 const ENTRIES = {
   epitech: {
     type: 'formation', title: 'EPITECH', place: 'Marseille', flag: '🇫🇷',
@@ -60,7 +56,7 @@ const ENTRIES = {
 }
 const TYPE_LABEL = { formation: 'Formation', experience: 'Expérience', asso: 'Associatif' }
 
-/* ── Wrapper « objet cliquable » : halo + objet + point-indice + nom ─ */
+/* ── Wrapper ─ */
 function Hotspot({ id, type, label, cue, halo, tagY, sel, setSel, children }) {
   const active = sel === id
   const w = label.length * 7.4 + 22
@@ -106,7 +102,6 @@ export default function Experience() {
   return (
     <section id="experience" className="experience">
       <div className="experience__inner">
-        {/* en-tête (section normale, AU-DESSUS — pas de cadre dans le cadre) */}
         <header className="experience__head">
           <p className="mono">&gt; la salle _</p>
           <h2>Entre dans la salle de mon parcours</h2>
@@ -123,13 +118,11 @@ export default function Experience() {
           </div>
         </header>
 
-        {/* ── LA PIÈCE = LE CADRE UNIQUE ──────────────────────────── */}
         <div className="room-frame">
           <div className="room-clip">
             <svg viewBox="0 0 1000 640" className="room" role="img"
               aria-label="Pièce illustrée : un bureau-école avec sept objets cliquables représentant mon parcours.">
 
-              {/* murs + sol */}
               <rect className="r-wall" x="0" y="0" width="1000" height="442" />
               <rect className="r-floor" x="0" y="438" width="1000" height="202" />
               {[80, 140, 200, 260, 320, 380].map((y) => (
@@ -138,12 +131,11 @@ export default function Experience() {
               <line className="r-floorline" x1="0" y1="440" x2="1000" y2="440" />
               <rect className="r-base" x="0" y="430" width="1000" height="12" />
               <ellipse className="r-rug" cx="500" cy="600" rx="340" ry="46" />
-              {/* lignes de perspective au sol */}
               {[120, 380, 640, 880].map((x, i) => (
                 <line key={i} className="r-persp" x1={x} y1="640" x2={x * 0.55 + 230} y2="444" />
               ))}
 
-              {/* ── DÉCO (non cliquable) ─────────────────────────── */}
+              {/* ── DÉCO ─────────────────────────── */}
               <g className="decor" aria-hidden="true">
                 {/* moulure plafond + 2e spot */}
                 <line className="d-moulure" x1="0" y1="14" x2="1000" y2="14" />
@@ -238,9 +230,9 @@ export default function Experience() {
                 </g>
               </g>
 
-              {/* ── OBJETS CLIQUABLES (fond → avant) ─────────────── */}
+              {/* ── OBJETS CLIQUABLES  ─────────────── */}
 
-              {/* LYCÉE — diplôme encadré au mur */}
+              {/* LYCÉE */}
               <Hotspot id="lycee" type="formation" label="Lycée Lacordaire"
                 cue={{ x: 200, y: 104 }} halo={{ cx: 200, cy: 168, rx: 82, ry: 76 }} tagY={84} sel={sel} setSel={setSel}>
                 <rect x="142" y="122" width="116" height="90" rx="6" fill="var(--c-paper)" stroke="var(--c-ink)" strokeWidth="4" />
@@ -251,7 +243,7 @@ export default function Experience() {
                 <path d="M170 122 L200 112 L230 122 L200 132 Z" fill="var(--c-forest)" stroke="var(--c-ink)" strokeWidth="3" strokeLinejoin="round" />
               </Hotspot>
 
-              {/* CAPGEMINI — baie serveur */}
+              {/* CAPGEMINI */}
               <Hotspot id="capgemini" type="experience" label="Capgemini"
                 cue={{ x: 880, y: 392 }} halo={{ cx: 880, cy: 500, rx: 72, ry: 128 }} tagY={372} sel={sel} setSel={setSel}>
                 <rect x="836" y="404" width="88" height="196" rx="9" fill="#2B2A28" stroke="var(--c-ink)" strokeWidth="4" />
@@ -264,7 +256,7 @@ export default function Experience() {
                 ))}
               </Hotspot>
 
-              {/* BROTHER — imprimante sur meuble */}
+              {/* BROTHER */}
               <Hotspot id="brother" type="experience" label="Brother France"
                 cue={{ x: 710, y: 404 }} halo={{ cx: 710, cy: 510, rx: 88, ry: 110 }} tagY={384} sel={sel} setSel={setSel}>
                 <rect x="650" y="506" width="120" height="92" rx="6" fill="var(--c-sand)" stroke="var(--c-ink)" strokeWidth="4" />
@@ -279,7 +271,7 @@ export default function Experience() {
                 <line x1="694" y1="446" x2="724" y2="446" stroke="var(--c-ink)" strokeWidth="2" opacity="0.6" />
               </Hotspot>
 
-              {/* EPITECH — bureau + écran terminal (pièce maîtresse) */}
+              {/* EPITECH  */}
               <Hotspot id="epitech" type="formation" label="EPITECH"
                 cue={{ x: 540, y: 404 }} halo={{ cx: 540, cy: 500, rx: 150, ry: 116 }} tagY={384} sel={sel} setSel={setSel}>
                 <rect x="420" y="520" width="240" height="18" rx="6" fill="var(--c-sand)" stroke="var(--c-ink)" strokeWidth="4" />
@@ -296,7 +288,7 @@ export default function Experience() {
                 </g>
               </Hotspot>
 
-              {/* COLLÈGE — tableau sur chevalet */}
+              {/* COLLÈGE */}
               <Hotspot id="college" type="experience" label="Collège Lacordaire"
                 cue={{ x: 235, y: 410 }} halo={{ cx: 235, cy: 500, rx: 110, ry: 110 }} tagY={390} sel={sel} setSel={setSel}>
                 <line x1="170" y1="546" x2="150" y2="612" stroke="var(--c-ink)" strokeWidth="5" strokeLinecap="round" />
@@ -308,7 +300,7 @@ export default function Experience() {
                 <rect x="158" y="544" width="154" height="10" rx="4" fill="var(--c-sand)" stroke="var(--c-ink)" strokeWidth="3" />
               </Hotspot>
 
-              {/* BDE — pupitre + micro */}
+              {/* BDE */}
               <Hotspot id="bde" type="asso" label="BDE Marsatek"
                 cue={{ x: 370, y: 470 }} halo={{ cx: 370, cy: 560, rx: 74, ry: 96 }} tagY={450} sel={sel} setSel={setSel}>
                 <path d="M332 600 L408 600 L396 516 L344 516 Z" fill="var(--c-sand)" stroke="var(--c-ink)" strokeWidth="4" strokeLinejoin="round" />
@@ -318,7 +310,7 @@ export default function Experience() {
                 <circle cx="370" cy="484" r="8" fill="var(--c-forest)" stroke="var(--c-ink)" strokeWidth="3" />
               </Hotspot>
 
-              {/* MYONGJI — globe sur table */}
+              {/* MYONGJI */}
               <Hotspot id="myongji" type="formation" label="Myongji University"
                 cue={{ x: 85, y: 470 }} halo={{ cx: 85, cy: 540, rx: 78, ry: 96 }} tagY={450} sel={sel} setSel={setSel}>
                 <rect x="30" y="560" width="110" height="14" rx="5" fill="var(--c-sand)" stroke="var(--c-ink)" strokeWidth="4" />
@@ -332,7 +324,7 @@ export default function Experience() {
             </svg>
           </div>
 
-          {/* ── POP-UP (hors du clip → jamais coupée) ────────────── */}
+          {/* ── POP-UP ────────────── */}
           <AnimatePresence>
             {entry && (
               <>

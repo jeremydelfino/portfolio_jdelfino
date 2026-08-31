@@ -4,12 +4,6 @@ import { Send, Mail, Check } from 'lucide-react'
 import Logo from '../components/Logo'
 import './Contact.css'
 
-/* ──────────────────────────────────────────────────────────────────
-   👉 À PERSONNALISER : ton email (et le profil LinkedIn).
-   Le formulaire ouvre le client mail (mailto) — aucun backend requis.
-   (Pour recevoir sans client mail, branche un service type Formspree :
-    voir la note en bas du fichier.)
-   ────────────────────────────────────────────────────────────────── */
 const MAIL = 'jeremydelfino3@gmail.com'
 const LINKEDIN = 'https://www.linkedin.com/in/jeremydelfino/'
 
@@ -142,6 +136,8 @@ export default function Contact() {
             <p className="mono">&gt; contact _</p>
             <h2>Écris-moi une carte</h2>
             <p className="contact__lead">Un projet, une question, ou juste pour discuter, n'hésitez pas !</p>
+            <p className="contact__lead">Une carte postale ça fait toujours plaisir ! 🙂"</p>
+
           </header>
 
           <motion.div

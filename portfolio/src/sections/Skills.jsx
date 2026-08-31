@@ -227,7 +227,7 @@ export default function Skills() {
             <p className="mono">&gt; compétences _</p>
             <h2>Mon environnement de travail</h2>
             <p className="skills__lead">
-              Ouvre un dossier, fouille le terminal : tout ce que je sais faire vit dans cette machine.
+              Voici l'endroit qui me passionne, même si à première vu ce n'est pas très joli c'est l'endroit qui a révolutionné le monde et qui continuera de le faire. Alors vous aussi venez découvrir mes capacités et mes compétences via ce magnifique terminal
             </p>
           </header>
 

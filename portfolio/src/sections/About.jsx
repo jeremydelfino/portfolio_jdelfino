@@ -5,13 +5,11 @@ import Logo from '../components/Logo'
 import Bricks from '../components/Bricks'
 import './About.css'
 
-/* Fichiers placés dans /public → on les référence par URL racine (façon Vite recommandée).
-   (Si tu préfères un import : mets-les dans src/assets/ et fais `import meChill from '../assets/dev_me_chill.png'`) */
 const meChill = '/dev_me_chill.png'
-const CV_URL = '/cv.pdf' // dépose ton PDF dans public/ (ou renomme ici)
+const CV_URL = '/cv.pdf' 
 const LINKEDIN = 'https://www.linkedin.com/in/jeremydelfino/'
 
-/* Icône LinkedIn maison (lucide a retiré les icônes de marque) */
+
 const LinkedinIcon = ({ size = 18 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none"
     stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -24,29 +22,28 @@ const LinkedinIcon = ({ size = 18 }) => (
 )
 
 /* ──────────────────────────────────────────────────────────────────
-   👉 ZONE À PERSONNALISER — remplace les [crochets] par ta vraie histoire.
+   Zone info
    ────────────────────────────────────────────────────────────────── */
 const ME = {
   name: 'Jérémy DELFINO',
   role: 'Étudiant en informatique & développeur',
-  city: 'Marseille & Seoul',
-  line: 'Passionné de tech, d esport et de café.',
+  city: 'Marseille & alentours',
+  line: 'Passionné de tech, d\'esport.',
 }
 const POLAROID = {
-  caption: '',
-  back: '',
+  caption: 'Quelques une de mes passions au dos :)',
+  back: 'Débutant au Piano, adore les animaux, un petit peu cinéphile, fan de culture G, Evidement les jeux vidéos et l\'esport, et pour finir les jeux de sociétés et les voitures',
 }
 const STICKIES = [
-  { text: 'Tombé dans le code en 2015, jamais ressorti.', tone: 'sand', rot: -3 },
-  { text: 'Un beau code c\'est bien, un beau design c\'est mieux.', tone: 'surface', rot: 2 },
+  { text: 'A appris le code en 2015 via les mods Minecraft.', tone: 'sand', rot: -3 },
+  { text: 'Un beau code c\'est parfait, mais avec un beau design c\'est encore mieux.', tone: 'surface', rot: 2 },
   { text: 'Mon rêve ? Travailler dans le monde dans l\'esport ', tone: 'sage', rot: -2 },
-  { text: '// en ce moment : JungleGap et Milo', tone: 'surface', rot: 3 },
-  { text: 'Vanilla latte han chan juseyo.', tone: 'sand', rot: -4 },
+  { text: '// en ce moment je travaille sur : Milo', tone: 'surface', rot: 3 },
+  { text: 'Mon passe-temps du moment : Continuer Outer Wilds.', tone: 'sand', rot: -4 },
 ]
-const TICKET = { artist: 'KC', sub: 'KCX 1', row: 'PLACE 21 · RANG F' }
+const TICKET = { artist: 'Imagine Dragons', sub: 'Stade de France', row: 'PLACE 21 · RANG F' }
 const COFFEE = { filled: 7, total: 10 }
 
-/* Positions sur le liège (desktop). left en %, top en px — ajuste librement. */
 const LAYOUT = {
   polaroid: { left: '4%', top: 58, rot: -4, z: 6 },
   idcard: { right: '5%', top: 54, rot: 3, z: 5 },
@@ -63,7 +60,7 @@ const LAYOUT = {
   ],
 }
 
-/* ── Petits SVG du liège ─────────────────────────────────────────── */
+/* ── Liège ─────────────────────────────────────────── */
 const Tack = () => (
   <span className="tack" aria-hidden="true">
     <svg width="22" height="24" viewBox="0 0 22 24" fill="none">
@@ -75,7 +72,7 @@ const Tack = () => (
 )
 const CupMini = ({ on }) => (
   <svg width="17" height="17" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-    <path d="M3 5 h8 v4 a3 3 0 0 1 -3 3 H6 a3 3 0 0 1 -3 -3 z" fill={on ? 'var(--c-forest)' : 'none'} stroke="var(--c-ink)" strokeWidth="1.6" />
+    <path d="M3 5 h8 v4 a3 3 0 0 1 -3 3 H6 a3 3 0 0 1 -3 -3 z" fill={on ? 'var(--c-sand)' : 'none'} stroke="var(--c-ink)" strokeWidth="1.6" />
     <path d="M11 6 c2.5 0 2.5 4 0 4" fill="none" stroke="var(--c-ink)" strokeWidth="1.6" />
   </svg>
 )
@@ -85,7 +82,7 @@ const Mug = ({ s = 64 }) => (
       <path d="M20 22 c-3 -5 3 -7 0 -12" /><path d="M30 22 c-3 -5 3 -7 0 -12" />
     </g>
     <rect x="8" y="24" width="34" height="26" rx="7" fill="var(--c-brick)" stroke="var(--c-ink)" strokeWidth="3.5" />
-    <ellipse cx="25" cy="25" rx="15" ry="3.6" fill="var(--c-forest)" />
+    <ellipse cx="25" cy="25" rx="15" ry="3.6" fill="var(--c-sand)" />
     <path d="M42 29 c12 0 12 15 0 15" fill="none" stroke="var(--c-ink)" strokeWidth="3.5" />
   </svg>
 )
@@ -103,7 +100,7 @@ const Garland = () => {
   )
 }
 
-/* ── DÉCOR « café coréen / startup » (derrière le liège) ─────────── */
+/* ── DÉCOR ─────────── */
 const Pendant = ({ s = 64 }) => (
   <svg width={s} height={s * 2.1} viewBox="0 0 60 126" fill="none" aria-hidden="true">
     <line x1="30" y1="0" x2="30" y2="54" stroke="var(--c-ink)" strokeWidth="2.5" />
@@ -273,7 +270,7 @@ export default function About() {
             <p className="mono">&gt; whoami _</p>
             <h2>Derrière l’écran</h2>
             <p className="about__lead">
-              Un CV c'est trop classique alors j'te propose mon panneau en liège, dans mon café préféré. Épingle, retourne, déplace : fais le tour.
+              En Corée du Sud, j'adorai regarder l'histoire des propriétaires de café via la décoration, et les tableaux en liège. Si tu n'as pas envie de lire un CV classique, tu peux découvrir mon parcours et mes passions à travers ce petit tableau.
             </p>
             <div className="about__actions">
               <a className="btn btn--primary about__btn" href={CV_URL} download="CV-Jeremy-Delfino.pdf">

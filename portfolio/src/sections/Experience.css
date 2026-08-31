@@ -20,7 +20,7 @@
 .legend__dot { width: 13px; height: 13px; border-radius: 50%; border: 2.5px solid var(--c-ink); display: inline-block; }
 .legend__dot--formation { background: var(--c-forest); }
 .legend__dot--experience { background: var(--c-exp); }
-.legend__dot--asso { background: var(--c-sage); }
+.legend__dot--asso { background: #D4C4A8; }
 
 /* ── LE CADRE UNIQUE = LA PIÈCE ──────────────────────────────────── */
 .room-frame {
