@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import Logo from './Logo'
-import './NavBar.css'
+import './Navbar.css'
 
 const LINKS = [
   { label: 'À propos', href: '#about', id: 'about' },
@@ -13,7 +13,7 @@ const LINKS = [
 const wrap = { hidden: {}, show: { transition: { staggerChildren: 0.08, delayChildren: 0.4 } } }
 const item = { hidden: { opacity: 0, y: -10 }, show: { opacity: 1, y: 0 } }
 
-export default function NavBar() {
+export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [active, setActive] = useState('')
   const [open, setOpen] = useState(false)
