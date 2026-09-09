@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Send, Mail, Check } from 'lucide-react'
+import { Send, Mail, Check, Loader } from 'lucide-react'
 import Logo from '../components/Logo'
 import './Contact.css'
 
 const MAIL = 'jeremydelfino3@gmail.com'
 const LINKEDIN = 'https://www.linkedin.com/in/jeremydelfino/'
+const W3F_KEY = import.meta.env.VITE_W3F_KEY
+const W3F_ENDPOINT = 'https://api.web3forms.com/submit'
 
 const LinkedinIcon = ({ size = 18 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -115,15 +117,38 @@ function MailBackdrop() {
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
-  const [sent, setSent] = useState(false)
+  const [botcheck, setBotcheck] = useState('')          // honeypot : rempli = bot
+  const [status, setStatus] = useState('idle')          // idle | sending | sent | error
+  const sent = status === 'sent'
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }))
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault()
-    const subject = encodeURIComponent(`Portfolio — message de ${form.name || 'quelqu’un'}`)
-    const body = encodeURIComponent(`${form.message}\n\n— ${form.name}\n${form.email}`)
-    window.location.href = `mailto:${MAIL}?subject=${subject}&body=${body}`
-    setSent(true)
+    if (status === 'sending' || botcheck) return
+
+    setStatus('sending')
+    try {
+      const res = await fetch(W3F_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: W3F_KEY,
+          subject: `Portfolio — message de ${form.name || 'quelqu’un'}`,
+          from_name: 'Portfolio JD',
+          name: form.name,
+          email: form.email,
+          replyto: form.email,
+          message: form.message,
+          botcheck: '',
+        }),
+      })
+      const data = await res.json()
+      if (!res.ok || !data.success) throw new Error(data.message || 'Envoi refusé')
+      setStatus('sent')
+      setForm({ name: '', email: '', message: '' })
+    } catch {
+      setStatus('error')
+    }
   }
 
   return (
@@ -172,9 +197,21 @@ export default function Contact() {
                   <span>ton email</span>
                   <input type="email" value={form.email} onChange={set('email')} required placeholder="toi@mail.com" />
                 </label>
-                <button type="submit" className="btn btn--primary pc-send">
-                  {sent ? <><Check size={17} strokeWidth={2.6} /> En route !</> : <><Send size={16} strokeWidth={2.4} /> Poster</>}
+
+                {/* piège à bots : invisible et hors du flux de tabulation */}
+                <input type="checkbox" className="pc-botcheck" tabIndex={-1} autoComplete="off"
+                  checked={!!botcheck} onChange={(e) => setBotcheck(e.target.checked ? 'on' : '')} aria-hidden="true" />
+
+                <button type="submit" className="btn btn--primary pc-send" disabled={status === 'sending' || sent}>
+                  {status === 'sending' ? <><Loader size={16} strokeWidth={2.4} className="pc-spin" /> Envoi…</>
+                    : sent ? <><Check size={17} strokeWidth={2.6} /> En route !</>
+                    : <><Send size={16} strokeWidth={2.4} /> Poster</>}
                 </button>
+
+                <p className={`pc-status ${status === 'error' ? 'is-error' : ''}`} role="status" aria-live="polite">
+                  {sent && 'Message parti, merci ! Je réponds vite.'}
+                  {status === 'error' && <>Ça a coincé — écris-moi directement à <a href={`mailto:${MAIL}`}>{MAIL}</a>.</>}
+                </p>
               </div>
             </form>
           </motion.div>
@@ -189,8 +226,3 @@ export default function Contact() {
     </section>
   )
 }
-
-/* NOTE — recevoir les messages sans client mail :
-   1) crée un formulaire sur https://formspree.io (gratuit), récupère ton endpoint
-   2) remplace `submit` par un fetch POST vers l'endpoint avec `form`
-   3) garde l'animation `setSent(true)` en cas de succès. */

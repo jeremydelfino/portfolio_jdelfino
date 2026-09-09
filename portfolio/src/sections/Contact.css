@@ -87,6 +87,20 @@
 }
 .contact__chip:hover { transform: translate(-1px, -2px); box-shadow: 5px 5px 0 var(--c-ink); }
 
+/* ── États d'envoi ───────────────────────────────────────────── */
+.pc-botcheck { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
+.pc-send:disabled { cursor: default; opacity: 0.75; transform: none; box-shadow: 4px 4px 0 var(--c-ink); }
+.pc-spin { animation: pc-rot 0.9s linear infinite; }
+.pc-status {
+  min-height: 1.2em; margin: 0.6rem 0 0; font-family: var(--font-mono);
+  font-size: 0.76rem; color: var(--c-forest);
+}
+.pc-status.is-error { color: #B0503F; }
+.pc-status a { color: inherit; text-decoration: underline; }
+
+@keyframes pc-rot { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .pc-spin { animation: none; } }
+
 /* ── Responsive ──────────────────────────────────────────────── */
 @media (max-width: 760px) {
   .md-hide { display: none; }
