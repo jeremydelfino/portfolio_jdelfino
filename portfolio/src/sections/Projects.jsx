@@ -78,6 +78,16 @@ const PROJECTS = [
     result: '30 Bêta-Testeurs, 2 partenaires nous suivent déjà pour cette bêta.',
     links: { demo: 'https://www.milo-education.fr', code: '#' },
   },
+  {
+    id: 'pokerancher', name: 'PokéRancher', year: '2026', type: 'Jeu Web / Backend : Python FastAPI',
+    accent: 'sage', images: publicSeq('pokerancher', 12), fit: 'contain',
+    pitch: 'Un jeu idle et de collection de Pokémon, avec un système de ranch et d\'élevage, d\'exploration et de combat.',
+    challenge: 'Créer un jeu Pokémon original, avec un gameplay addictif et une progression gratifiante, tout en respectant l\'univers Pokémon.',
+    solution: 'Un ranch où vous pouvez élever vos Pokémon, les faire combattre et les faire explorer pour trouver de nouveaux Pokémon. Un système de quêtes et d\'événements pour garder les joueurs engagés. Un backend robuste pour gérer les données des joueurs et des Pokémon.',
+    stack: ['TypeScript', 'React', 'Python', 'FastAPI', 'PostgreSQL'],
+    result: 'Le jeu est en développement, avec une version alpha prévue pour 2027.',
+    links: { demo: '#', code: '#' },
+  },
 ]
 
 const ACCENT = { sage: 'var(--c-sage)', sand: 'var(--c-sand)', forest: 'var(--c-forest)' }
