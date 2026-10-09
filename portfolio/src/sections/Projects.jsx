@@ -63,9 +63,9 @@ const PROJECTS = [
     accent: 'sage', images: publicSeq('junglegap', 12), fit: 'contain',
     pitch: 'Site communautaire pour la communauté LoL FR, mini-jeux, simulation de carrière Club, prédictions sur les matchs.',
     challenge: 'Un site pour passer le temps des queues, parier sur les games de vos streamers et amis...',
-    solution: 'Une carte interactive qui note les cafés sur le “score dev” (wifi, prises, bruit, café) avec avis communautaires et filtres en temps réel.',
+    solution: 'Un profil utilisateur complet avec un système de personnalisation via les artworks réalisés par la communauté. Des mini-jeux style LoLdle et carrière manager. Historiqe de partie des joueurs. Paris fictifs sur les parties professionnelles et de vos amis.',
     stack: ['React', 'Vite', 'Python', 'Node.js', 'PostgreSQL'],
-    result: 'Lancement de la bêta en 2026, sortie officielle en 2027.',
+    result: 'Lancement de la bêta en 2026. Pas de sortie officielle du au manque de financement',
     links: { demo: '#', code: '#' },
   },
   {
